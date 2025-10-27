@@ -1,66 +1,123 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Simple Library Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Project Title
 
-## About Laravel
+Simple Library Management System
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Description / Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This project is a simple Library Management System built using Laravel. It allows users to manage books, categories, students, and borrowing records in a clean and organized way. The system demonstrates the use of CRUD operations (Create, Read, Update, Delete) following the MVC architecture pattern.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Objectives
 
-## Learning Laravel
+- To understand and apply the Model-View-Controller (MVC) architecture in Laravel.
+- To implement CRUD operations for managing library data.
+- To demonstrate database relationships such as one-to-many and many-to-one.
+- To create a user-friendly interface for managing books, students, and borrowings.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Features / Functionality
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Book Management - Add, edit, delete, and view books with category association.
+- Category Management - Classify books into categories.
+- Student Management - Keep track of registered students who borrow books.
+- Borrowing System - Record when students borrow or return books.
+- Simple Navigation - Clean table-based UI using Bootstrap for readability.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation Instructions
 
-## Laravel Sponsors
+1\. Clone or download the project.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+2\. Run \`composer install\` to install dependencies.
 
-### Premium Partners
+3\. Copy \`.env.example\` to \`.env\` and set up your database connection.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+4\. Run \`php artisan migrate\` to create tables in the database.
 
-## Contributing
+5\. (Optional) Run \`php artisan db:seed\` to insert sample data.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+6\. Start the local development server using \`php artisan serve\`.
 
-## Code of Conduct
+7\. Open \`<http://127.0.0.1:8000\`> in your browser.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Usage
 
-## Security Vulnerabilities
+After installation, you can navigate through the system via the following pages:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- /books - View all books.
+- /books/create - Add a new book.
+- /students - View and manage students.
+- /borrowings - Record and manage borrowings.
+
+## Database Relationships
+
+Here's how the relationships work in the system:
+
+• A Category has many Books (One-to-Many).
+
+• A Book belongs to one Category (Many-to-One).
+
+• A Student has many Borrowings (One-to-Many).
+
+• A Borrowing belongs to one Student and one Book (Many-to-One).
+
+## MVC Architecture (Simplified Explanation)
+
+The system follows Laravel's MVC (Model-View-Controller) structure:
+
+- Model - Handles database interaction. Each table (Book, Category, Student, Borrowing) has a model that defines relationships and structure.
+- View - Displays data to the user through Blade templates (e.g., book list, forms).
+- Controller - Connects models and views. It processes user input, retrieves data, and returns the appropriate view.
+
+## Screenshots or Code Snippets
+
+Index blade of books:
+<pre>
+@extends('layouts.app')
+
+@section('content')
+    &lt;h1 class="mb-3"&gt;Books List&lt;/h1&gt;
+    &lt;a href="{{ route('books.create') }}" class="btn btn-success mb-3"&gt;Add Book&lt;/a&gt;
+
+    &lt;table class="table table-hover"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Title&lt;/th&gt;
+                &lt;th&gt;Author&lt;/th&gt;
+                &lt;th&gt;Category&lt;/th&gt;
+                &lt;th&gt;Actions&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            @foreach($books as $book)
+                &lt;tr&gt;
+                    &lt;td&gt;{{ $book->title }}&lt;/td&gt;
+                    &lt;td&gt;{{ $book->author }}&lt;/td&gt;
+                    &lt;td&gt;{{ $book->category->name }}&lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;a href="{{ route('books.edit', $book->id) }}" class="btn btn-success btn-sm"&gt;Edit&lt;/a&gt;
+                        &lt;form action="{{ route('books.destroy', $book->id) }}" method="POST" class="d-inline"&gt;
+                            @csrf
+                            @method('DELETE')
+                            &lt;button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Are you sure you want to delete?')"&gt;
+                                Delete
+                            &lt;/button&gt;
+                        &lt;/form&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            @endforeach
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+@endsection
+</pre>
+</div>
+
+
+
+## Contributors
+
+Developed by: Sherlee Annejelic C. Dulay
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-source and free to use for educational purposes only.
