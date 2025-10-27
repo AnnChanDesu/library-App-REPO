@@ -117,6 +117,7 @@ Index blade of books:
 ## Contributors
 
 Developed by: Sherlee Annejelic C. Dulay
+
 Partner's Name for Merge Project: Lexter Aberin
 
 ## License
