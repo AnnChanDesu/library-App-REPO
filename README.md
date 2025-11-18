@@ -75,40 +75,44 @@ Index blade of books:
 @extends('layouts.app')
 
 @section('content')
-    &lt;h1 class="mb-3"&gt;Books List&lt;/h1&gt;
-    &lt;a href="{{ route('books.create') }}" class="btn btn-success mb-3"&gt;Add Book&lt;/a&gt;
+    <h1 class="mb-3">Books List</h1>
+    <a href="{{ route('books.create') }}" class="btn btn-success mb-3">Add Book</a>
 
-    &lt;table class="table table-hover"&gt;
-        &lt;thead&gt;
-            &lt;tr&gt;
-                &lt;th&gt;Title&lt;/th&gt;
-                &lt;th&gt;Author&lt;/th&gt;
-                &lt;th&gt;Category&lt;/th&gt;
-                &lt;th&gt;Actions&lt;/th&gt;
-            &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
             @foreach($books as $book)
-                &lt;tr&gt;
-                    &lt;td&gt;{{ $book->title }}&lt;/td&gt;
-                    &lt;td&gt;{{ $book->author }}&lt;/td&gt;
-                    &lt;td&gt;{{ $book->category->name }}&lt;/td&gt;
-                    &lt;td&gt;
-                        &lt;a href="{{ route('books.edit', $book->id) }}" class="btn btn-success btn-sm"&gt;Edit&lt;/a&gt;
-                        &lt;form action="{{ route('books.destroy', $book->id) }}" method="POST" class="d-inline"&gt;
+                <tr>
+                    <td>{{ $book->title }}</td>
+                    <td>{{ $book->author }}</td>
+                    <td>{{ $book->category->name }}</td>
+                    <td>
+                        <!-- Edit button -->
+                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-success">Edit</a>
+
+                        <!-- Delete button -->
+                        <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            &lt;button type="submit" class="btn btn-danger btn-sm"
-                                onclick="return confirm('Are you sure you want to delete?')"&gt;
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Are you sure you want to delete?')">
                                 Delete
-                            &lt;/button&gt;
-                        &lt;/form&gt;
-                    &lt;/td&gt;
-                &lt;/tr&gt;
+                            </button>
+                        </form>
+                    </td>
+                </tr>
             @endforeach
-        &lt;/tbody&gt;
-    &lt;/table&gt;
+        </tbody>
+    </table>
 @endsection
+
 </pre>
 </div>
 
