@@ -112,7 +112,125 @@ Index blade of books:
 </pre>
 </div>
 
+Index blade of borrowings:
+<pre>@extends('layouts.app')
 
+@section('content')
+<h1 class="mb-3">Borrowings</h1>
+<a href="{{ route('borrowings.create') }}" class="btn btn-success mb-3">Add Borrowing</a>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Book</th>
+            <th>Borrow Date</th>
+            <th>Return Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($borrowings as $borrowing)
+            <tr>
+                <td>{{ $borrowing->student->name }}</td>
+                <td>{{ $borrowing->book->title }}</td>
+                <td>{{ $borrowing->borrow_date }}</td>
+                <td>{{ $borrowing->return_date ?? 'Not Returned' }}</td>
+                <td>{{ ucfirst($borrowing->status) }}</td>
+                <td>
+                    @if($borrowing->status !== 'returned')
+                        <form action="{{ route('borrowings.returned', $borrowing->id) }}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="btn btn-success btn-sm">Mark Returned</button>
+                        </form>
+                    @else
+                        <span class="badge bg-success">Returned</span>
+                    @endif
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+@endsection
+</pre>
+
+Index blade of categories:
+<pre>@extends('layouts.app')
+
+@section('content')
+    <h1 class="mb-3">Categories</h1>
+    <a href="{{ route('categories.create') }}" class="btn btn-success mb-3">Add Category</a>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($categories as $category)
+                <tr>
+                    <td>{{ $category->name }}</td>
+                    <td>
+                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-success">Edit</a>
+
+                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Are you sure you want to delete?')">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endsection
+</pre>
+
+Index blade of students:
+<pre>@extends('layouts.app')
+
+@section('content')
+    <h1 class="mb-3">Students</h1>
+    <a href="{{ route('students.create') }}" class="btn btn-success mb-3">Add Student</a>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Student Number</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($students as $student)
+                <tr>
+                    <td>{{ $student->student_number }}</td>
+                    <td>{{ $student->name }}</td>
+                    <td>{{ $student->email }}</td>
+                    <td>{{ $student->contact_number }}</td>
+                    <td>
+                        <a href="{{ route('students.edit', $student->id) }}" class="btn btn-success">Edit</a>
+                        <form action="{{ route('students.destroy', $student->id) }}" method="POST" class="d-inline">
+                            @csrf @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Delete this?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endsection
+</pre>
 
 ## Contributors
 
