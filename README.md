@@ -70,7 +70,7 @@ The system follows Laravel's MVC (Model-View-Controller) structure:
 
 ## Screenshots or Code Snippets
 
-Index blade of books:
+### Index blade of books:
 <pre>
 @extends('layouts.app')
 
@@ -94,10 +94,8 @@ Index blade of books:
                     <td>{{ $book->author }}</td>
                     <td>{{ $book->category->name }}</td>
                     <td>
-                        <!-- Edit button -->
                         <a href="{{ route('books.edit', $book->id) }}" class="btn btn-success">Edit</a>
 
-                        <!-- Delete button -->
                         <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
@@ -113,10 +111,10 @@ Index blade of books:
     </table>
 @endsection
 </pre>
-<pre>![Books](screenshots/Screenshot 2025-10-27 090521.png)</pre>
-</div>
+<img width="1920" height="1080" alt="Screenshot 2025-10-27 090521" src="https://github.com/user-attachments/assets/dd3b6d22-62e3-4222-b025-b48df729ef59" />
 
-Index blade of borrowings:
+
+### Index blade of borrowings:
 <pre>@extends('layouts.app')
 
 @section('content')
@@ -159,8 +157,10 @@ Index blade of borrowings:
 </table>
 @endsection
 </pre>
+<img width="1920" height="1080" alt="Screenshot 2025-10-27 092024" src="https://github.com/user-attachments/assets/3236ab11-6815-43fa-b9b7-af5c073158f4" />
 
-Index blade of categories:
+
+### Index blade of categories:
 <pre>@extends('layouts.app')
 
 @section('content')
@@ -196,8 +196,10 @@ Index blade of categories:
     </table>
 @endsection
 </pre>
+<img width="1920" height="1080" alt="Screenshot 2025-10-27 091843" src="https://github.com/user-attachments/assets/0d858cdf-5214-4248-890a-28634bc0632c" />
 
-Index blade of students:
+
+### Index blade of students:
 <pre>@extends('layouts.app')
 
 @section('content')
@@ -235,6 +237,8 @@ Index blade of students:
     </table>
 @endsection
 </pre>
+<img width="1920" height="1080" alt="Screenshot 2025-10-27 092004" src="https://github.com/user-attachments/assets/45e4a295-ccdb-4954-ab42-e4377ba3b7d2" />
+
 
 ## Contributors
 
