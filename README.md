@@ -112,8 +112,8 @@ Index blade of books:
         </tbody>
     </table>
 @endsection
-
 </pre>
+<pre>![Books](screenshots/Screenshot 2025-10-27 090521.png)</pre>
 </div>
 
 Index blade of borrowings:
